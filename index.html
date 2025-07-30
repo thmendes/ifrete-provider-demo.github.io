@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ubora Transportes - Sua Carga em Boas Mãos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #003366;
+      /* Dark Blue */
+      --secondary-color: #FFAA00;
+      /* Gold/Amber */
+      --text-color: #333;
+      --light-bg: #f5f8fa;
+      --dark-bg: #1a237e;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--light-bg);
+      color: var(--text-color);
+      line-height: 1.7;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary-color) 0%, #ced0d1 100%);
+      color: white;
+      padding: 2em 0;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    header h1 {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      font-size: 3.5em;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      animation: fadeInDown 1s ease-out;
+    }
+
+    header p {
+      font-size: 1.3em;
+      margin-top: 10px;
+      opacity: 0.9;
+      animation: fadeIn 1.5s ease-out;
+    }
+
+    nav {
+      background-color: var(--primary-color);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      text-align: center;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    nav ul li {
+      margin: 0 25px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      padding: 18px 0;
+      display: inline-block;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 4px;
+      background-color: var(--secondary-color);
+      bottom: 0;
+      left: 0;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease-out;
+    }
+
+    nav ul li a:hover {
+      color: var(--secondary-color);
+      transform: translateY(-3px);
+    }
+
+    nav ul li a:hover::after {
+      transform: translateX(0%);
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 40px;
+      background-color: white;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+      border-radius: 15px;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .hero {
+      background: url('./assets/background.jpg') center center / cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 80px 20px;
+      margin-bottom: 40px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero h2 {
+      font-family: 'Montserrat', sans-serif;
+      margin-top: 0;
+      font-size: 3em;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+      animation: slideInLeft 1s ease-out;
+    }
+
+    .hero p {
+      font-size: 1.4em;
+      max-width: 800px;
+      margin: 0 auto;
+      opacity: 0.95;
+      animation: slideInRight 1s ease-out;
+    }
+
+    .calculator-section {
+      text-align: center;
+      margin-top: 50px;
+      margin-bottom: 50px;
+      padding: 40px;
+      background-color: var(--light-bg);
+      border-radius: 15px;
+      box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e0e0e0;
+    }
+
+    .calculator-section h3 {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--primary-color);
+      font-size: 2.5em;
+      margin-bottom: 30px;
+      position: relative;
+    }
+
+    .calculator-section h3::after {
+      content: '';
+      position: absolute;
+      width: 80px;
+      height: 5px;
+      background-color: var(--secondary-color);
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 3px;
+    }
+
+    freight-calculator {
+      margin: 40px auto;
+      display: block;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+      border: 0.5px solid var(--primary-color);
+      transition: all 0.5s ease;
+    }
+
+    freight-calculator:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+    }
+
+    .calculator-section p {
+      margin-top: 30px;
+      font-size: 1.2em;
+      color: #555;
+    }
+
+    section h2 {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--primary-color);
+      font-size: 3em;
+      margin-top: 60px;
+      margin-bottom: 30px;
+      text-align: center;
+      position: relative;
+    }
+
+    section h2::after {
+      content: '';
+      position: absolute;
+      width: 100px;
+      height: 5px;
+      background-color: var(--secondary-color);
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 3px;
+    }
+
+    section p {
+      font-size: 1.15em;
+      margin-bottom: 25px;
+      text-align: center;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      color: #666;
+    }
+
+    .features-grid {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .features-grid li {
+      background-color: #e3f2fd;
+      /* Lighter Blue */
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      font-size: 1.2em;
+      font-weight: 600;
+      color: var(--primary-color);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.4s ease, background-color 0.4s ease, box-shadow 0.4s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .features-grid li:hover {
+      transform: translateY(-10px);
+      background-color: #cce7ff;
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .features-grid li::before {
+      content: '✔';
+      color: var(--secondary-color);
+      font-size: 2em;
+      margin-bottom: 15px;
+      display: block;
+    }
+
+    footer {
+      background-color: var(--dark-bg);
+      color: white;
+      text-align: center;
+      padding: 2em 0;
+      margin-top: 60px;
+      box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 1em;
+      opacity: 0.9;
+    }
+
+    /* Animations */
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Ubora Transportes</h1>
+    <p>Conectando o Brasil, com Excelência e Inovação.</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#">Serviços</a></li>
+      <li><a href="#">Sobre Nós</a></li>
+      <li><a href="#">Contato</a></li>
+      <li><a href="#">Rastreamento</a></li>
+      <li><a href="#">FAQ</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-content">
+      <h2>Sua Carga. Nosso Compromisso.</h2>
+      <p>Descubra a facilidade e a segurança de transportar com quem entende do assunto. Cotações instantâneas e
+        rastreamento em tempo real para sua tranquilidade.</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <section class="calculator-section">
+      <h3>Calcule seu Frete em Segundos!</h3>
+      <freight-calculator provider-id="b9a80357-3761-4359-b8d5-ff3dad97ef9c"></freight-calculator>
+      <p>Nossa calculadora integrada oferece cotações transparentes e instantâneas, personalizadas para suas
+        necessidades de transporte. Simule agora e comprove a agilidade!</p>
+    </section>
+
+    <section>
+      <h2>Por Que Escolher a Ubora?</h2>
+      <p>Na Ubora Transportes, não apenas movemos cargas, criamos soluções logísticas eficientes e confiáveis. Somos
+        guiados pela excelência e pela paixão em entregar o melhor para você.</p>
+      <ul class="features-grid">
+        <li>Entrega Rápida e Segura: Sua carga no destino certo, no tempo prometido, com total integridade.</li>
+        <li>Rastreamento Avançado: Monitore sua encomenda em cada etapa da jornada, com atualizações em tempo real.
+        </li>
+        <li>Atendimento Humanizado: Suporte dedicado 24/7, pronto para tirar suas dúvidas e oferecer a melhor solução.
+        </li>
+        <li>Preços Competitivos: Custo-benefício incomparável, com total transparência em todas as cotações.</li>
+        <li>Tecnologia de Ponta: Investimos em inovação para otimizar rotas e garantir a segurança do seu transporte.
+        </li>
+        <li>Compromisso Ambiental: Operações sustentáveis que minimizam o impacto no meio ambiente.</li>
+      </ul>
+    </section>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Ubora Transportes. Todos os direitos reservados. | Privacidade | Termos de Uso</p>
+  </footer>
+
+  <script type="module" src="assets/ifrete-widget.js"></script>
+</body>
+
+</html>

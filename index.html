@@ -355,6 +355,65 @@
         transform: translateX(0);
       }
     }
+
+    /* Otimizações para responsividade */
+    @media (max-width: 768px) {
+      /* Ajuste geral do container e seções para mobile */
+      .container {
+        width: 100%;
+        padding: 0;
+        border-radius: 0;
+        margin: 20px auto;
+      }
+
+      .container > section {
+        padding: 30px 15px;
+      }
+
+      header h1 {
+        font-size: 2.5em;
+      }
+
+      header p {
+        font-size: 1em;
+      }
+
+      .hero {
+        padding: 60px 15px;
+      }
+
+      .hero h2 {
+        font-size: 2em;
+      }
+
+      .hero p {
+        font-size: 1.1em;
+      }
+
+      nav ul li {
+        margin: 0 10px;
+      }
+
+      nav ul li a {
+        font-size: 0.9em;
+      }
+
+      section h2 {
+        font-size: 2.2em;
+      }
+
+      .calculator-section {
+        padding: 30px 0; /* Remove padding lateral para a calculadora usar a largura total */
+        border-radius: 0;
+      }
+      
+      /* O componente da calculadora agora ocupará 100% do espaço horizontal */
+      freight-calculator {
+        width: 100%;
+        max-width: 100%;
+        box-shadow: none; /* Remove a sombra para uma aparência mais limpa no mobile */
+      }
+    }
   </style>
 </head>
 
